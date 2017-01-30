@@ -11,7 +11,7 @@ def get_image_path(instance, filename):
 class Textbook(models.Model):
     founder = models.CharField(max_length=256)
     title = models.CharField(max_length=256)
-    cover = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    cover = models.ImageField(upload_to="photos/", blank=True, null=True)
 
     def __str__(self):
         return self.title
