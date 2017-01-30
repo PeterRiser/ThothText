@@ -1,0 +1,19 @@
+<html>
+    <header>
+        <h1>{{page_title}}</h1>
+    </header>
+    <body>
+        <div>
+        {% for section in sections %}
+        <div>
+            <h2>
+                {{section.title}}
+            </h2>
+            <p>
+                {{section.info}}
+            </p>
+        </div>
+        {% endfor %}
+        </div>
+    </body>
+</html>

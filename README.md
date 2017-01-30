@@ -1,5 +1,24 @@
 
 <h1>THOTH TEXT</h1>
+<h2>Run Server</h2>
+    $ python manage.py runserver $IP:$PORT
+    
+<h2> Install Required Tools</h2>
+
+    sudo pip install -r requirements.txt
+    
+<h2>Adding New Template</h2>
+
+ - Make sure to go to workspace/istarrt/settings.py and add   
+  `os.path.join(BASE_DIR, 'APP-NAME-HERE/templates')`     
+    to     
+  `TEMPLATES['DIRS']`
+
+<h2>Adding Stylesheets and Scripts to Templates</h2>
+ - When putting the tags, make sure to set   
+ `src="{% static 'REL-FILEPATH-HERE' %}"`
+
+
 ## Scrum Manager
 https://tree.taiga.io/project/peterhriser-thothtext/
 
