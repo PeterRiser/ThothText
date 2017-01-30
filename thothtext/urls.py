@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from home.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', 'home.views.index'),
+    url(r'^page/(?P<pid>[0-9]{3})/$', genpage, name = 'page')
 ]
+
