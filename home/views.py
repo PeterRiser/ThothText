@@ -4,7 +4,14 @@ from django.template import RequestContext
 from home.models import *
 #create your views here.
 def index(request):
-    return render_to_response('index.html')
+    books = Textbook.objects.all()
+    ret = {}
+    for o in books:
+        ret[o.id] = o
+    ret['books'] = books
+    return render(request,'index.html', ret)
+    
+
 def genpage(request, pid = -1):
     page = Page.objects.get(id = int(pid))
     sections = page.sections.all()

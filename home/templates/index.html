@@ -1,4 +1,18 @@
 <html>
-    <h1>Hello World!</h1>
-    
+    <header>
+        <h1>Thoth Text</h1>
+        <h2>The Textbook for the People by the People</h2>
+    </header>
+    <body>
+        <h1>Our Library</h1>
+        {% for book in books %}
+        <div>
+            <div>
+                <img src= "{{ book.cover.url }}"/>
+                <p>{{book.title}}</p>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </body>
 </html>
