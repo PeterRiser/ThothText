@@ -24,5 +24,5 @@ import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index , name = 'index'),
-    url(r'^page/(?P<pid>[0-9]{3})/$', genpage, name = 'page')
+    url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/$', genpage, name = 'book')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

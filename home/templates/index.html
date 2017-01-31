@@ -4,15 +4,21 @@
         <h2>The Textbook for the People by the People</h2>
     </header>
     <body>
+        <div style="">
         <h1>Our Library</h1>
         {% for book in books %}
-        <div>
+        <a href="{% url 'book' bid=book.id pid=001 %}">
             <div>
-                <img src= "{{ book.cover.url }}"/>
-                <p>{{book.title}}</p>
+                <img style ="height:200px"src= "{{ book.cover.url }}"/>
+                <h3>{{book.title}}</h3>
+                <p>{{book.founder}}</p>
             </div>
-            
-        </div>
+        </a>
         {% endfor %}
+        </div>
+        
+        
+        
+        <h1>SEND NUDES</h1>
     </body>
 </html>

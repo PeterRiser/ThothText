@@ -12,8 +12,9 @@ def index(request):
     return render(request,'index.html', ret)
     
 
-def genpage(request, pid = -1):
-    page = Page.objects.get(id = int(pid))
+def genpage(request, bid = -1, pid = 1):
+    b = Textbook.objects.all().get(id = int(bid))
+    page = b.pages.get(page_num = int(pid))
     sections = page.sections.all()
     ret = {
         'page_title': page.page_title,
