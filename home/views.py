@@ -13,10 +13,22 @@ def index(request):
     
 
 def genpage(request, bid = -1, pid = 1):
-    b = Textbook.objects.all().get(id = int(bid))
+    b = Textbook.objects.get(id = int(bid))
     page = b.pages.get(page_num = int(pid))
     sections = page.sections.all()
+    if  b.pages.filter(page_num = page.page_num+1).exists():
+        next_page = page.page_num+1
+    else:
+        next_page = -1
+    if b.pages.filter(page_num = page.page_num-1).exists():
+        prev_page = page.page_num-1
+    else:
+        prev_page = -1
+    
     ret = {
+        'prev_page':prev_page,
+        'next_page':next_page,
+        'book':b,
         'page_title': page.page_title,
         'sections': sections,
         
