@@ -6,11 +6,11 @@
     <body>
         
         <div>
-            {% if next_page != -1 %}
-                <button><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
-            {% endif %}
             {% if prev_page != -1 %}
                 <button><a href="{% url 'book' bid=book.id pid=prev_page %}">Previous Page</a></button>
+            {% endif %}
+            {% if next_page != -1 %}
+                <button><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
             {% endif %}
         </div>
         
