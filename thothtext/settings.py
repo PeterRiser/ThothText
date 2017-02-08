@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'nested_inline'
+    'nested_inline',
+    'ckeditor',
+    'filebrowser'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -102,8 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -123,3 +123,10 @@ USE_TZ = True
 MEDIA_ROOT="./"
 MEDIA_URL='/media/'
 STATIC_URL = '/static/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}

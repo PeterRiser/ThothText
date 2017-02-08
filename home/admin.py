@@ -5,17 +5,25 @@ from home.models import *
 
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 
-class SectionInline(NestedStackedInline):
-    model = Section
-    extra = 1
+admin.site.register(Section)
+admin.site.register(Textbook)
+admin.site.register(Page)
+
+# '''
+# class SectionInline(NestedStackedInline):
+#     model = Section
+#     extra = 1
 
 
-class PageInline(NestedStackedInline):
-    model = Page
-    extra = 1
-    inlines = [SectionInline]
+# class PageInline(NestedStackedInline):
+#     model = Page
+#     extra = 1
+#     inlines = [SectionInline]
 
 
-@admin.register(Textbook)
-class TextbookAdmin(NestedModelAdmin):
-    inlines = [PageInline]
+# @admin.register(Textbook)
+# class TextbookAdmin(NestedModelAdmin):
+#     inlines = [PageInline]
+# '''
+    
+    
