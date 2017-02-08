@@ -1,24 +1,37 @@
+
 <html>
+    <!DOCTYPE html>
+    {% load staticfiles %}
+    <head>
+    <meta charset="utf-8">
+        <title>TothText</title>
+        <link rel = "stylesheet" href= "{% static 'myCSS.css' %}" >
+    </head>
     <header>
-        <h1>Thoth Text</h1>
-        <h2>The Textbook for the People by the People</h2>
+         <hr size="20" color=#225773>
+            <div id="Intro">
+                <h1>Thoth Text</h1>
+                <h2>The Textbook for the People by the People<br> Open source and crowd funded for all look at all of this amazing typeing happening here Lorem ipsum dolor sit amet, est vocibus ceteros accusata at. Ut has populo delicata. Sea summo zril ei, vis te dolore noluisse, labore eripuit mnesarchum usu no. Ut vix sumo vitae integre. Everti utamur expetenda vim in.Id eam epicurei consequat efficiantur, ius quidam eloquentiam ei, et vel eius omittantur. Pro vivendum euripidis gloriatur te. Te usu quot augue reformidans, case quando urbanitas mel ne, omnis constituto vim ea. Mei te erat facer feugait. Ne erat dissentiet sea, quo at noluisse appetere torquatos. Te tota eirmod maluisset vis. Legere convenire mei ut, pro hinc alienum ocurreret ex. Pri at oblique ponderum theophraso, alii vidisse consulatu cu mea, constituto honestatis eu pro. Nihil saepe percipitur his ut, vis ex inani deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel. </h2>
+            </div>
     </header>
     <body>
-        <div style="">
+        <hr size="20" color=#225773>
         <h1>Our Library</h1>
+           
         {% for book in books %}
-        <a href="{% url 'book' bid=book.id pid=001 %}">
-            <div>
-                <img style ="height:200px"src= "{{ book.cover.url }}"/>
-                <h3>{{book.title}}</h3>
-                <p>{{book.founder}}</p>
+        <div class="responsive">
+            <div class="img">
+                <a target ="_blank" href="{% url 'book' bid=book.id pid=001 %}">
+                    <img src= "{{ book.cover.url }}" width ="200" height ="400"/>
+                    <div class ="desc">
+                        <h3>{{book.title}}</h3>
+                        <p>{{book.founder}}</p>
+                    </div>
+                </a>
             </div>
-        </a>
-        {% endfor %}
+        
+       
         </div>
-        
-        
-        
-        <h1>SEND NUDES</h1>
+        {% endfor %}
     </body>
 </html>

@@ -17,6 +17,7 @@ lpthw.web==1.1
 django-markdown-deux
 mercurial==2.8.2
 numpy==1.8.2
+django-nested-inline
 oauth==1.0.1
 paramiko==1.10.1
 pexpect==3.1

@@ -1,0 +1,95 @@
+/**page.css**/
+/*General Body*/
+
+#banner {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+ 
+  padding-bottom: -5;
+  margin: 0 auto; 
+  background: #225773;
+  color: #225773;
+ 
+}
+h1 {
+ color: #ff9900;
+ font-size: 20;
+ text-align: center;
+ font: bold 100%;
+ padding: 5px;
+ border-bottom: thin solid black;
+ border-top: thin solid black;
+ background-color: #f2f2f2;
+}
+
+h2{
+color: #ff9900;
+ font-size: 25;
+ text-align: center;
+ font: bold 100%;
+ padding: 10px;
+ border-bottom: thin solid black;
+}
+
+#PageText{
+    border: thin solid black;
+}
+
+h3{
+color: #ff9900;
+ font-size: 25;
+ text-align: center;
+ font: bold 100%;
+ padding: 10px;
+}
+
+p1{
+font-family: Sans-serif;
+ background-color: #ffffff;
+ color: #ff9900;
+ padding: 5px;
+}
+
+
+
+/** Working on buttons forward and back **/
+
+.arrowLeft a {
+text-decoration: none;
+position: fixed;
+left: -5px;
+top: 45%;
+padding: 15px 10px;
+transition: .2s ease-in;
+}
+ 
+.arrowLeft a:hover {
+left: 0;
+transition: .2s ease-in;
+color: #fff;
+}
+ 
+.arrowRight a {
+text-decoration: none;
+position: fixed;
+right: -5px;
+top: 45%;
+padding: 15px 10px;
+
+transition: .2s ease-in;
+}
+ 
+.arrowRight a:hover {
+right: 0;
+transition: .2s ease-in;
+color: #fff;
+}
+ 
+.arrowNav a {
+text-decoration: none;
+background: #225773;
+color: #fff;
+font-size: 16px;
+}

@@ -1,0 +1,160 @@
+/* myStyle.css */
+/*General Body*/
+body {
+ font-family: Sans-serif;
+ background-color: #ffffff;
+ color: #ff9900;
+ 
+}
+
+#Intro {
+ border-bottom: thin solid black;
+ 
+}
+
+h1 {
+ color: #ff9900;
+ font-size: 45;
+ text-align: center;
+ font: bold 200%;
+ padding: 0px;
+ border-bottom: thin solid black;
+
+ background-color: #f2f2f2;
+}
+h2{
+ color: black;
+ font-size: small;
+ text-align: left;
+}
+
+h2::first-line{
+ font-size:medium;
+ font-style: oblique;
+ text-align: center;
+ 
+}
+
+/*general paragraph*/
+p {
+ background-color:#f2f2f2 ;
+ color: #000;
+ text-align: left;
+}
+
+/*Basic css for images*/
+
+#books
+
+div.img {
+    border: 1px solid #ccc;
+}
+
+.img:hover{
+ border: 1px solid #777;
+}
+
+.img img {
+    width: 100%;
+    height: auto;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    
+    width: 24.99999%;
+}
+
+
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+/*img{
+ 
+display: inline-block;
+/* height: 800px;
+margin: 25px 10px;
+ white-space: nowrap;
+
+}
+
+*/
+
+
+
+
+
+/*createing the css for links*/
+a {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a:link {
+  color: #66676c;
+}
+
+a:visited {
+  color: #a8aab3;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: #e2e4ee;
+}
+
+a:hover {
+  border-bottom: 1px solid;     
+  background: #e2e4ee;
+}
+
+a:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
+}
+
+
+
+/*
+@media only screen and (max-width: 700px){
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .responsive {
+        width: 100%;
+    }
+}
+
+*/
