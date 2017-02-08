@@ -19,32 +19,31 @@ class Textbook(models.Model):
     
 class Page(models.Model):
 
-    textbook = models.ForeignKey(Textbook,related_name="pages",blank=True, null=True)
-    page_title = models.CharField(max_length = 256,blank=True, null=True)
+    t = models.ForeignKey(Textbook,related_name="pages",blank=True, null=True)
+    page_title = models.CharField(max_length = 256,blank=True, null=True, unique = True)
     page_num = IntegerRangeField(min_value=0,max_value=256, blank=True, null=True)
     
     def getTextID(self):
         return self.textbook.id
         
     def __str__(self):
-        return self.page_title
+        return str(self.page_title)
+    
+    class Meta:
+        ordering = ['page_num']
+
+    def save(self, **kwargs):
+        total = Page.objects.exclude(pk = self.pk)
+        pages = total.filter(page_num__gte=self.page_num)
+        for page in pages: 
+            page.page_num += 1
+            page.save()
+                
+        if not pages:
+            self.page_num = total.count()+1
+        super(Page, self).save(**kwargs)
         
-    
-    def iterSave(self):
-        pages = self.textbook.pages
-        MAX_PAGE = pages.aggregate(Max('page_num'))
-        try:
-            cpy = pages.get(page_num = self.page_num)
-            for page in pages:
-                if page.page_num >= self.page_num:
-                    obj,created = Page.objects.update_or_create(page_title = page.page_title, page_num = page.page_num+1, textbook = page.textbook)
-        except:
-            if self.page_num > MAX_PAGE:
-                obj,created = Page.objects.update_or_create(page_title = self.page_title, page_num = self.page_num+1, textbook = self.textbook)
-    
-    def save(self, *args,**kwargs):
-        self.iterSave()
-        super(Page,self).save(*args, **kwargs)
+        
 
 class Section(models.Model):
     page = models.ForeignKey(Page,related_name="sections")
