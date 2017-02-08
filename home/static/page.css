@@ -1,0 +1,42 @@
+/**page.css**/
+/*General Body*/
+
+
+h1 {
+ color: #ff9900;
+ font-size: 20;
+ text-align: center;
+ font: bold 100%;
+ padding: 5px;
+ border-bottom: thin solid black;
+ border-top: thin solid black;
+ background-color: #f2f2f2;
+}
+
+h2{
+color: #ff9900;
+ font-size: 25;
+ text-align: center;
+ font: bold 100%;
+ padding: 10px;
+ border-bottom: thin solid black;
+}
+
+#PageText{
+    border: thin solid black;
+}
+
+h3{
+color: #ff9900;
+ font-size: 25;
+ text-align: center;
+ font: bold 100%;
+ padding: 10px;
+}
+
+p1{
+font-family: Sans-serif;
+ background-color: #ffffff;
+ color: #ff9900;
+ padding: 5px;
+}
