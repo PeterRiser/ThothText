@@ -1,7 +1,14 @@
 <html>
+     <!DOCTYPE html>
+    {% load staticfiles %}
+    <head>
+    <meta charset="utf-8">
+        <title>TothText</title>
+        <link rel = "stylesheet" href= "{% static 'page.css' %}" >
+    </head>
     <header>
         <h1>{{book.title}}</h1>
-        <h1>{{page_title}}</h1>
+        <h2>{{page_title}}</h2>
     </header>
     <body>
         
@@ -16,10 +23,10 @@
         
         <div>
         {% for section in sections %}
-        <div>
-            <h2>
+        <div id="PageText">
+            <h3>
                 {{section.section_title}}
-            </h2>
+            </h3>
             <p>
                 {{section.text}}
             </p>
