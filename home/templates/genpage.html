@@ -6,19 +6,41 @@
         <title>TothText</title>
         <link rel = "stylesheet" href= "{% static 'page.css' %}" >
     </head>
+   
+        
+        
     <header>
+
+
+
+<hr size="20" color=#225773>
         <h1>{{book.title}}</h1>
+        <hr size="20" color=#225773>
         <h2>{{page_title}}</h2>
+        
     </header>
     <body>
-        
+        <!--
         <div>
             {% if prev_page != -1 %}
-                <button><a href="{% url 'book' bid=book.id pid=prev_page %}">Previous Page</a></button>
+                <button1><a href="{% url 'book' bid=book.id pid=prev_page %}">Previous Page</a></button>
             {% endif %}
             {% if next_page != -1 %}
-                <button><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
+                <button1><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
             {% endif %}
+        </div>
+        -->
+        <div class ="arrowNav">
+            <div class ="arrowLeft">
+            {% if prev_page != -1 %}
+                <button1><a href="{% url 'book' bid=book.id pid=prev_page %}">Previous Page</a></button>
+            {% endif %}
+            </div>
+            <div class ="arrowRight">
+            {% if next_page != -1 %}
+                <button1><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
+            {% endif %}
+        </div>
         </div>
         
         <div>
