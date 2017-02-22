@@ -4,10 +4,13 @@ from home.models import *
 # Register your models here.
 
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
+class PageAdmin(admin.ModelAdmin):
+    list_filter = ['textbook']
+    
 
 admin.site.register(Section)
 admin.site.register(Textbook)
-admin.site.register(Page)
+admin.site.register(Page,PageAdmin)
 
 # '''
 # class SectionInline(NestedStackedInline):

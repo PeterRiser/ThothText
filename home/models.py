@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Max
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import BaseUserManager
 from custom import *
 import os
 
@@ -12,14 +14,22 @@ def get_image_path(instance, filename):
 # Create your models here.
 class Textbook(models.Model):
     founder = models.CharField(max_length=256)
-    title = models.CharField(max_length=256)
+    title = models.CharField(max_length=256, unique=True)
     cover = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    def save(self, **kwargs):
+        if Textbook.objects.filter(title=self.title).exists():
+            super(Textbook,self).save(**kwargs)
+        else:
+            super(Textbook,self).save(**kwargs)
+            t = Textbook.objects.get(title= self.title)
+            newPage = Page(page_title="CoverPage", page_num=1,textbook=t)
+            newPage.save()
     def __str__(self):
         return self.title
     
 class Page(models.Model):
 
-    t = models.ForeignKey(Textbook,related_name="pages",blank=True, null=True)
+    textbook = models.ForeignKey(Textbook,related_name="pages",blank=True, null=True)
     page_title = models.CharField(max_length = 256,blank=True, null=True, unique = True)
     page_num = IntegerRangeField(min_value=0,max_value=256, blank=True, null=True)
     
@@ -53,6 +63,3 @@ class Section(models.Model):
         return self.section_title
 
 
-    
-        
-    
