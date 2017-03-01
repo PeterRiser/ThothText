@@ -60,8 +60,23 @@ def index(request):
     
 
 def genpage(request, bid = -1, pid = 1):
+    ret= {}
     b = Textbook.objects.get(id = int(bid))
     page = b.pages.get(page_num = int(pid))
+    if request.method == 'POST':  # if the form has been filled
+ 
+        form = SectionForm(request.POST)
+ 
+        if form.is_valid():  # All the data is valid
+            section_title = request.POST.get('section_title', '')
+            text = request.POST.get('text', '')
+            page = page
+            section = Section(section_title=section_title, text=text, page=page)
+        # saving all the data in the current object into the database
+            section.save()
+        # creating an user object containing all the data
+        
+ 
     sections = page.sections.all()
     if  b.pages.filter(page_num = page.page_num+1).exists():
         next_page = page.page_num+1
@@ -71,7 +86,7 @@ def genpage(request, bid = -1, pid = 1):
         prev_page = page.page_num-1
     else:
         prev_page = -1
-    
+    form = SectionForm()
     ret = {
 
         'prev_page':prev_page,
@@ -79,13 +94,13 @@ def genpage(request, bid = -1, pid = 1):
         'book':b,
         'page_title': page.page_title,
         'sections': sections,
-        
+        'page':page,
+        'form':form
     }
     return render(request,"genpage.html", ret)
-    
+  
 def handler404(request):
-    response = render_to_response('error.html', {},
-                                  context_instance=RequestContext(request))
+    response = render_to_response('error.html', {},context_instance=RequestContext(request))
     response.status_code = 404
     return response
 
@@ -95,3 +110,4 @@ def handler500(request):
     context_instance=RequestContext(request))
     response.status_code = 500
     return response
+    
