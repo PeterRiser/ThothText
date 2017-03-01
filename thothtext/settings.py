@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'nested_inline',
+    'ckeditor',
+    'ckeditor_uploader'
     
 ]
 
@@ -103,8 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = "photos/ck/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'basic'
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
