@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-
+import django.contrib.auth
+django.contrib.auth.LOGIN_URL = '/login/'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -38,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'nested_inline',
+    'ckeditor',
+    'filebrowser',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -102,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -122,3 +125,10 @@ USE_TZ = True
 MEDIA_ROOT="./"
 MEDIA_URL='/media/'
 STATIC_URL = '/static/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'Basic',
+    },
+}
