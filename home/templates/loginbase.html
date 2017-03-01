@@ -1,23 +1,19 @@
 <!DOCTYPE html PUBLIC >
 <html>
-    {% load staticfiles %}
+
+     {% load staticfiles %}
+    <link rel = "stylesheet" href= "{%static 'LoginBase.css' %}" >
+
     <head>
-    <meta charset="utf-8">
-        <title>TothText</title>
-        <link rel = "stylesheet" href= "{% static 'myCSS.css' %}" >
-        
+           
+        <title>ThothText-Login</title>
     </head>
-    <header>
-         <hr size="20" color=#225773>
-            <div id="Intro">
-                <h1>Thoth Text</h1>
-            </div>
-    </header>
+   
     <body>
-        <h2>{% block head %}{% endblock %}</h2>
-        <div>
-            {% block content %}{% endblock %}
-        </div>
- 
+         
+        <h1>{% block head %}{% endblock %}</h1>
+       {% block content %}{% endblock %}
     </body>
+   <div id = "Box"></div>
+   
 </html>
