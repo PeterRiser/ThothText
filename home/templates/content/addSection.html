@@ -1,0 +1,12 @@
+{% extends "genpage.html" %}
+{% block f %}
+{% if is_registered %}
+<p>Section Added!</p>
+{% else %}
+        <form action="{% url 'section' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+        </form>
+{% endif %}
+{%endblock%}
