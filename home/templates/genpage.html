@@ -4,6 +4,7 @@
     <head>
     <meta charset="utf-8">
         <title>TothText</title>
+        
         <link rel = "stylesheet" href= "{% static 'page.css' %}" >
     </head>
    
@@ -50,11 +51,29 @@
                 {{section.section_title}}
             </h3>
             <p>
-                {{section.text}}
+                <div>
+                {{section.text|safe}}
+                </div>
             </p>
         </div>
         {% endfor %}
         </div>
         
     </body>
+    <footer>
+        <div>
+            {% if user.is_authenticated %}
+            <form action="{% url 'book' pid=page.page_num bid=book.id %}" method="post">
+            {% csrf_token %}
+            
+            {{form.media}}
+            {{form.as_p}}
+            <input type="submit" value='Submit'>
+            </form>
+            
+            {% else %}
+            <a href = "{% url 'login' %}">Log In to make changes to this page!</a>
+            {% endif %}
+        </div>
+    </footer>
 </html>

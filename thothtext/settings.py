@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'nested_inline'
+    'nested_inline',
+    'ckeditor',
+    'ckeditor_uploader'
+    
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -102,8 +105,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = "photos/ck/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'basic'
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -123,3 +131,5 @@ USE_TZ = True
 MEDIA_ROOT="./"
 MEDIA_URL='/media/'
 STATIC_URL = '/static/'
+
+
