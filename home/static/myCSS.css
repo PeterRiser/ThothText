@@ -3,7 +3,9 @@
 body {
  font-family: Sans-serif;
  background-color: #ffffff;
- color: #ff9900;
+ color: #FF9933;
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cedce7+0,596a72+100;Grey+3D+%231 */
+
  
 }
 
@@ -12,8 +14,103 @@ body {
  border-bottom: thin solid black;
  
 }
+header, footer {
+    padding: 15px;
+    color: #FF9933;
+    font-size: larger;
+    clear: left;
+    text-align: center;
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cedce7+0,596a72+100;Grey+3D+%231 */
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#596a72+0,cedce7+100 */
+background: #596a72; /* Old browsers */
+background: -moz-linear-gradient(left, #596a72 0%, #cedce7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #596a72 0%,#cedce7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #596a72 0%,#cedce7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=1 ); /* IE6-9 */
+}
 
-h1 {
+h1{
+    font-size: 55px;
+}
+
+h2{
+    font-size:30px;
+}
+
+p1{
+    float:left;
+    max-width: 50%;
+}
+
+/* Button for logging in maybe some other options?*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: black;
+}
+
+/**Making text parts of Website**/
+.intro {
+color: black;
+font-size: small;
+text-align: left;
+background-color:white;
+padding: 10px;
+padding-bottom: 25px;
+}
+
+
+.middleTextVideo {
+    
+}
+
+
+
+
+.containerBooks {
+    background-color: #FF9933;
+ 
+}
+
+.subsection{
+    padding-top:  8px;
+    color: #FF9933;
+    background-color: #CCCCCC;
+    clear: left;
+    text-align: center;
+    
+    background: #596a72; /* Old browsers */
+background: -moz-linear-gradient(left, #596a72 0%, #cedce7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #596a72 0%,#cedce7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #596a72 0%,#cedce7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=1 ); /* IE6-9 */
+}
+
+
+/*h1 {
  color: #ff9900;
  font-size: 45;
  text-align: center;
@@ -34,14 +131,9 @@ h2::first-line{
  font-style: oblique;
  text-align: center;
  
-}
+}*/
 
 /*general paragraph*/
-p {
- background-color:#f2f2f2 ;
- color: #000;
- text-align: left;
-}
 
 /*Basic css for images*/
 

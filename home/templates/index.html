@@ -6,40 +6,63 @@
     <meta charset="utf-8">
         <title>TothText</title>
         <link rel = "stylesheet" href= "{% static 'myCSS.css' %}" >
-        
     </head>
-    <header>
-         <hr size="20" color=#225773>
-            <div id="Intro">
-                <h1>Thoth Text</h1>
-                <h2>
-                {% if user.is_authenticated %}
-                    Hello, {{user.first_name}}, <a href="{% url 'logout' %}">Log out!</a>
+    <ul>
+  
+    {% if user.is_authenticated %}
+                  
+                   <li> <a class = "active" href="{% url 'logout' %}">Welcome back! Click to log out!</a></li>
                 {% else %}
-                    <a href = "{% url 'login' %}">Log In </a>
+                    <li><a href = "{% url 'login' %}">Log In </a></li>
                 {% endif %}
-                </h2>
+                <li><a href=#home> Home </a></li>
+                <li><a href=#home> Library </a></li>
+                <li><a href=#home> About Us </a></li>
+                <li><a href=#home> Contact Us </a></li>
                 
- 
-                <h2>The Textbook for the People by the People<br> Open source and crowd funded for all look at all of this amazing typeing happening here Lorem ipsum dolor sit amet, est vocibus ceteros accusata at. Ut has populo delicata. Sea summo zril ei, vis te dolore noluisse, labore eripuit mnesarchum usu no. Ut vix sumo vitae integre. Everti utamur expetenda vim in.Id eam epicurei consequat efficiantur, ius quidam eloquentiam ei, et vel eius omittantur. Pro vivendum euripidis gloriatur te. Te usu quot augue reformidans, case quando urbanitas mel ne, omnis constituto vim ea. Mei te erat facer feugait. Ne erat dissentiet sea, quo at noluisse appetere torquatos. Te tota eirmod maluisset vis. Legere convenire mei ut, pro hinc alienum ocurreret ex. Pri at oblique ponderum theophraso, alii vidisse consulatu cu mea, constituto honestatis eu pro. Nihil saepe percipitur his ut, vis ex inani deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel. </h2>
-            </div>
-    </header>
-    <body>
-        <hr size="20" color=#225773>
-        <h1>Our Library</h1>
+</ul>
+    <header>
+         <!---<hr size="20" color=black>-->
            
+                <h1>Thoth Text</h1>
+    </header>
+    
+   
+    <div class ="intro">
+                <h1>The Textbook for the People by the People</h1>
+                <p>Open source and crowd funded for all look at all of this amazing typeing happening here Lorem ipsum dolor sit amet, est vocibus ceteros accusata at. Ut has populo delicata. Sea summo zril ei, vis te dolore noluisse, labore eripuit mnesarchum usu no. Ut vix sumo vitae integre. Everti utamur expetenda vim in.Id eam epicurei consequat efficiantur, ius quidam eloquentiam ei, et vel eius omittantur. Pro vivendum euripidis gloriatur te. Te usu quot augue reformidans, case quando urbanitas mel ne, omnis constituto vim ea. Mei te erat facer feugait. Ne erat dissentiet sea, quo at noluisse appetere torquatos. Te tota eirmod maluisset vis. Legere convenire mei ut, pro hinc alienum ocurreret ex. Pri at oblique ponderum theophraso, alii vidisse consulatu cu mea, constituto honestatis eu pro. Nihil saepe percipitur his ut, vis ex inani deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel. </p>
+           
+          </div>
+  
+    <hr size="20" color=black>
+    <div class = "intro">
+        <h1>How do we do it?</h1>
+        <p1> Lorem ipsum dolor sit amet, est vocibus ceteros accusata at.i deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel.</p1>
+   
+    </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ifi9M7DRazI" frameborder="0" allowfullscreen></iframe>
+    
+    <hr size="30" color=white>
+        <!---<hr size="20" color=#225773>-->
+        <div class ="subsection">
+       <h2> Our Library</h2>
+        </div>
+        <div class=" containerBooks">
         {% for book in books %}
         <div class="responsive">
             <div class="img">
                 <a href="{% url 'book' bid=book.id pid=001 %}">
                     <img src= "{{ book.cover.url }}" width ="200" height ="400"/>
                     <div class ="desc">
-                        <h3>{{book.title}}</h3>
+                        <h1>{{book.title}}</h1>
                         <p>{{book.founder}}</p>
                     </div>
                 </a>
             </div>
+        
+       
         </div>
         {% endfor %}
-    </body>
+        </div>   
+   
 </html>
