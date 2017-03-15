@@ -57,9 +57,7 @@ class Page(models.Model):
 
 class Section(models.Model):
     page = models.ForeignKey(Page,related_name="sections")
-    section_title = models.CharField(max_length=256)
-    text = RichTextField(config_name='awesome_ckeditor')
+    section_title = models.CharField(max_length=256,null=True)
+    text = RichTextField(config_name='default',null=True)
     def __str__(self):
         return self.section_title
-
-

@@ -10,8 +10,9 @@
     <ul>
   
     {% if user.is_authenticated %}
-                  
-                   <li> <a class = "active" href="{% url 'logout' %}">Welcome back! Click to log out!</a></li>
+                     
+                   <li><a class = "active"> Hi, {{user.first_name}}</a></li>
+                   <li><a class = "active" href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li><a href = "{% url 'login' %}">Log In </a></li>
                 {% endif %}
@@ -19,8 +20,28 @@
                 <li><a href=#home> Library </a></li>
                 <li><a href=#home> About Us </a></li>
                 <li><a href=#home> Contact Us </a></li>
+                <li><a>
+                    <form method="get">
+          
+
+                    <label style="color:orange" for="id_q">Search:</label>
+                    <input type="text" name="q" id="id_q"/>
+                    <input type="submit" value="Go!"/>
+                    </form>
+                    </a>
+                </li>
                 
-</ul>
+    </ul>
+    <div class ="WILSON MOVE THIS WHEREEVER">
+    {% if found_entries != False %}
+    <div><p>Search Results:</p>
+        {% for page in found_entries %}
+        <p><a style="color:black" href="{% url 'book' bid=page.textbook.id pid=page.page_num %}">{{page.page_title}} <v style="color:light gray"> - {{page.textbook.title}}</v></a></p>
+        {% endfor %}
+        
+    </div>
+    {% endif %}
+    </div>
     <header>
          <!---<hr size="20" color=black>-->
            

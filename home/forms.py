@@ -2,7 +2,10 @@
 import re
 from django import forms
 from django.contrib.auth.models import User
+from models import *
+from ckeditor.widgets import CKEditorWidget
 from django.utils.translation import ugettext_lazy as _
+from ckeditor.fields import RichTextField
  
 class RegistrationForm(forms.Form):
  
@@ -23,3 +26,9 @@ class RegistrationForm(forms.Form):
             if self.cleaned_data['password1'] != self.cleaned_data['password2']:
                 raise forms.ValidationError(_("The two password fields did not match."))
         return self.cleaned_data
+
+
+class SectionForm(forms.ModelForm):
+    class Meta:
+        model = Section
+        exclude = ('page',)
