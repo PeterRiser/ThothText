@@ -32,4 +32,4 @@ urlpatterns = [
     url(r'^register/$', register),
     url(r'^register/success/$', register_success),
     
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

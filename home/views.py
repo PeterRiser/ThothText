@@ -51,7 +51,23 @@ def l(request):
 def index(request):
     user = request.user
     books = Textbook.objects.all()
+    query_string = ''
+    found_entries = None
     ret = {}
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        
+        entry_query = get_query(query_string, ['page_title'])
+        
+        found_entries = Page.objects.filter(entry_query)
+        ret['entry_query'] = entry_query
+        if not found_entries:
+            ret['found_entries'] = False
+        else:
+            ret['found_entries'] = found_entries
+    else:
+        ret['found_entries'] = False
+    
     for o in books:
         ret[o.id] = o
     ret['books'] = books
@@ -110,4 +126,15 @@ def handler500(request):
     context_instance=RequestContext(request))
     response.status_code = 500
     return response
-    
+
+def search(request):
+    query_string = ''
+    found_entries = None
+    if ('q' in request.GET) and request.GET['q'].strip():
+        query_string = request.GET['q']
+        
+        entry_query = get_query(query_string, ['title', 'body',])
+        
+        found_entries = Entry.objects.filter(entry_query).order_by('-pub_date')
+
+    return found_entries
