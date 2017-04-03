@@ -22,13 +22,14 @@ import django
 import settings
 
 urlpatterns = [
+    url(r'^prev/$',prev ),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', index , name = 'index'),
-    url(r'^L/$',l, name = 'login'),
+    url(r'^$', home , name = 'home'),
+    url(r'^search/$', search, name = 'search'),
     url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/$', genpage, name = 'book'),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^logout/$', logout_page, name='logout'),
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login'), # If user is not login it will redirect to login page
+    url(r'^accounts/login/$','django.contrib.auth.views.login', name = 'login'),  # If user is not login it will redirect to login page
     url(r'^register/$', register),
     url(r'^register/success/$', register_success),
     

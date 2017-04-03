@@ -41,38 +41,17 @@ def register_success(request):
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
- 
-@login_required
-def l(request):
-    return HttpResponseRedirect('/')
 
-
-
-def index(request):
+def home(request):
     user = request.user
     books = Textbook.objects.all()
-    query_string = ''
-    found_entries = None
     ret = {}
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        
-        entry_query = get_query(query_string, ['page_title'])
-        
-        found_entries = Page.objects.filter(entry_query)
-        ret['entry_query'] = entry_query
-        if not found_entries:
-            ret['found_entries'] = False
-        else:
-            ret['found_entries'] = found_entries
-    else:
-        ret['found_entries'] = False
     
     for o in books:
         ret[o.id] = o
     ret['books'] = books
     ret['user'] = user
-    return render(request,'index.html', ret)
+    return render(request,'mainpage/home.html', ret)
     
 
 def genpage(request, bid = -1, pid = 1):
@@ -93,7 +72,8 @@ def genpage(request, bid = -1, pid = 1):
         # creating an user object containing all the data
         
  
-    sections = page.sections.all()
+    sections = page.sections.all().order_by("-order")
+    
     if  b.pages.filter(page_num = page.page_num+1).exists():
         next_page = page.page_num+1
     else:
@@ -113,7 +93,7 @@ def genpage(request, bid = -1, pid = 1):
         'page':page,
         'form':form
     }
-    return render(request,"genpage.html", ret)
+    return render(request,"content/genpage.html", ret)
   
 def handler404(request):
     response = render_to_response('error.html', {},context_instance=RequestContext(request))
@@ -128,13 +108,28 @@ def handler500(request):
     return response
 
 def search(request):
+    ret = {}
     query_string = ''
     found_entries = None
     if ('q' in request.GET) and request.GET['q'].strip():
         query_string = request.GET['q']
         
-        entry_query = get_query(query_string, ['title', 'body',])
+        entry_query = get_query(query_string, ['page_title'])
         
-        found_entries = Entry.objects.filter(entry_query).order_by('-pub_date')
-
-    return found_entries
+        found_entries = Page.objects.filter(entry_query)
+        ret['entry_query'] = entry_query
+        if not found_entries:
+            ret['found_entries'] = False
+        else:
+            ret['found_entries'] = found_entries
+    else:
+        ret['found_entries'] = False
+    return render(request,'mainpage/search.html', ret)
+    
+def prev(request):
+    red = request.META.get('HTTP_REFERER')
+    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + red)
+    if red[-3:]=="/L/":
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
