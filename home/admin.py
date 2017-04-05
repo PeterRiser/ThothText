@@ -5,6 +5,7 @@ from home.models import *
 
 from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 class PageAdmin(admin.ModelAdmin):
+    list_display = ('page_title', 'page_num')
     list_filter = ['textbook']
     
 

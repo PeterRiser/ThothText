@@ -1,4 +1,4 @@
-{% extends "loginbase.html" %}
+{% extends "index.html" %}
 {% block head %}User Registration{% endblock %}
 {% block content %}
     <form method="post" action=".">{% csrf_token %}
@@ -7,5 +7,5 @@
         </table>
         <input type="submit" value="Register" />
     </form>
-    <a href="/">Login</a>
+    <a href="{% url 'login' %}">Login</a>
 {% endblock %}
