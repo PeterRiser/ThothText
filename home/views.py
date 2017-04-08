@@ -6,11 +6,11 @@ from home.models import *
 from forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import *
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
- 
+import json
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -125,11 +125,29 @@ def search(request):
     else:
         ret['found_entries'] = False
     return render(request,'mainpage/search.html', ret)
-    
-def prev(request):
-    red = request.META.get('HTTP_REFERER')
-    print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + red)
-    if red[-3:]=="/L/":
-        return HttpResponseRedirect('/')
-    else:
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@ensure_csrf_cookie
+def editpage(request, bid = -1, pid = 1):
+    ret = {}
+    b = Textbook.objects.get(id = int(bid))
+    page = b.pages.get(page_num = int(pid))
+    ret = {
+
+        'book':b,
+        'page':page,
+        'sections':page.sections,
+    }
+    if request.method == 'POST':
+        order = json.loads(request.POST.get("order"))
+        newOrder = []
+        for i in range(len(order)):
+            new = Section.objects.filter(page=page).get(order=order[i])
+            newOrder.append( new )
+        for i in range(len(newOrder)):
+            newOrder[i].order = i+1
+            newOrder[i].save()
+        
+            
+            
+            
+    return render(request,"content/editpage.html", ret)
