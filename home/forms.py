@@ -31,4 +31,4 @@ class RegistrationForm(forms.Form):
 class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
-        exclude = ('page',)
+        exclude = ('page','order')

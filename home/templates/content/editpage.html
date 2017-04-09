@@ -33,10 +33,8 @@
   $(function() {
   $("#test").button().click(function(e) {
     e.preventDefault();
-    alert("Test");
     var serialOrder = $("#sortable").serialize();
     var arrayOrder = $("#sortable").sortable("toArray");
-    alert("array: " + arrayOrder);
     
     $.ajax({
              type:"POST",
@@ -62,7 +60,7 @@
     <h1>{{page.page_title}}</h1>
     <ul id="sortable">
         {% for section in sections.all %}
-            <li id="{{section.order}}">{{section.order}}. {{section.section_title}}</li>
+            <li id="{{section.order}}">{{section.order}}. {{section.section_title}}<a href="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}">Edit this Section</a></li>
         {% endfor %}
       
     </ul>

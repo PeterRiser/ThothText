@@ -1,14 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
 <div>
-            {% if user.is_authenticated %}
-            <form action="{% url 'book' pid=page.page_num bid=book.id %}" method="post">
+            <form action="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}" method="post">
             {% csrf_token %}
             
             {{form.media}}
             {{form.as_p}}
-            <input type="submit" value='Submit'>
+            <input id="test" type="submit" value='Submit'>
             </form>
             
-            {% else %}
-            <a href = "{% url 'login' %}?next={{request.path}}">Log In to make changes to this page!</a>
-            {% endif %}
 </div>
+{% endblock %}
+ 

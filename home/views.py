@@ -58,21 +58,11 @@ def genpage(request, bid = -1, pid = 1):
     ret= {}
     b = Textbook.objects.get(id = int(bid))
     page = b.pages.get(page_num = int(pid))
-    if request.method == 'POST':  # if the form has been filled
- 
-        form = SectionForm(request.POST)
- 
-        if form.is_valid():  # All the data is valid
-            section_title = request.POST.get('section_title', '')
-            text = request.POST.get('text', '')
-            page = page
-            section = Section(section_title=section_title, text=text, page=page)
-        # saving all the data in the current object into the database
-            section.save()
+    
         # creating an user object containing all the data
         
  
-    sections = page.sections.all().order_by("-order")
+    sections = page.sections.all().order_by("order")
     
     if  b.pages.filter(page_num = page.page_num+1).exists():
         next_page = page.page_num+1
@@ -82,7 +72,7 @@ def genpage(request, bid = -1, pid = 1):
         prev_page = page.page_num-1
     else:
         prev_page = -1
-    form = SectionForm()
+    
     ret = {
 
         'prev_page':prev_page,
@@ -91,7 +81,6 @@ def genpage(request, bid = -1, pid = 1):
         'page_title': page.page_title,
         'sections': sections,
         'page':page,
-        'form':form
     }
     return render(request,"content/genpage.html", ret)
   
@@ -146,8 +135,33 @@ def editpage(request, bid = -1, pid = 1):
         for i in range(len(newOrder)):
             newOrder[i].order = i+1
             newOrder[i].save()
+
         
             
             
             
     return render(request,"content/editpage.html", ret)
+    
+def editsection(request, bid = -1, pid=1,sid=1):
+    book = Textbook.objects.get(id = int(bid))
+    page = book.pages.get(page_num = int(pid))
+    section = page.sections.get(order=int(sid))
+    form = SectionForm(instance=section)
+    ret = {
+        'book':book, 
+        'page':page,
+        'section':section,
+        'form': form
+        }
+   
+    if request.method == 'POST':  # if the form has been filled
+     
+            form = SectionForm(request.POST)
+     
+            if form.is_valid():  # All the data is valid
+                section.section_title = request.POST.get('section_title', '')
+                section.text = request.POST.get('text', '')
+
+            section.save()
+            return HttpResponseRedirect('/book/'+str(book.id)+"/"+str(page.page_num)+"/editpage/")
+    return render(request,"content/editsection.html", ret)

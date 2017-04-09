@@ -16,7 +16,7 @@
         </div>
         </div>
         <a href="{% url 'editpage' bid=book.id pid=page.page_num %}"><button>Edit this Page</button></a>
-        {% for section in sections.all reversed %}
+        {% for section in sections.all %}
         <div id="PageText">
             <h3>
                 {{section.order}}. {{section.section_title}}
