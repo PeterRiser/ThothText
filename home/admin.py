@@ -7,9 +7,12 @@ from nested_inline.admin import NestedStackedInline, NestedModelAdmin
 class PageAdmin(admin.ModelAdmin):
     list_display = ('page_title', 'page_num')
     list_filter = ['textbook']
-    
 
-admin.site.register(Section)
+class SectionAdmin(admin.ModelAdmin):
+    list_display = ('section_title', 'order')
+    list_filter = ['page']
+
+admin.site.register(Section, SectionAdmin)
 admin.site.register(Textbook)
 admin.site.register(Page,PageAdmin)
 
