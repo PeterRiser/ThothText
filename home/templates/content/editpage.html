@@ -31,7 +31,8 @@
   <script src="{% static 'draggable.js' %}"></script>
   <script type="text/javascript">
   $(function() {
-  $("#test").button().click(function(e) {
+    $("#ret").button()
+  $("#test2").button().click(function(e) {
     e.preventDefault();
     var serialOrder = $("#sortable").serialize();
     var arrayOrder = $("#sortable").sortable("toArray");
@@ -45,6 +46,23 @@
              success: function(){
                window.location.replace("{% url 'book' bid=book.id pid=page.page_num %}");
                
+             }
+        });
+        return false;
+  });
+  $("#test1").button().click(function(e) {
+    e.preventDefault();
+    var serialOrder = $("#sortable").serialize();
+    var arrayOrder = $("#sortable").sortable("toArray");
+    
+    $.ajax({
+             type:"POST",
+             url:"{% url 'editpage' bid=book.id pid=page.page_num %}",
+             data: {
+                    'order': JSON.stringify(arrayOrder) // insert ordering here
+                    },
+             success: function(){
+               location.reload();
              }
         });
         return false;
@@ -64,7 +82,9 @@
         {% endfor %}
       
     </ul>
-    <a id="test" href="{% url 'book' pid=page.page_num bid=book.id %}">Test Button</a>
+    <a id= "ret" href="{% url 'book' pid=page.page_num bid=book.id %}">Exit without Saving</a>
+    <a id="test1" href="{% url 'book' pid=page.page_num bid=book.id %}">Save</a>
+    <a id="test2" href="{% url 'book' pid=page.page_num bid=book.id %}">Save and Exit</a>
      
      
 </body>

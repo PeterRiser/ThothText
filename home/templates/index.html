@@ -13,7 +13,7 @@
         <li><a href="{% url 'home' %}"> <img style="height:50px" src = "{% static 'LOGO.png' %}"> </a></li>
     {% if user.is_authenticated %}
                      
-        <li><a class = "active"> Hi, {{user.first_name}}</a></li>
+        <li><a class = "active"> Hi, {{user.username}}</a></li>
         <li><a class = "active" href="{% url 'logout' %}">Log Out</a></li>
     {% else %}
         <li><a href = "{% url 'login' %}?next={{request.get_full_path|urlencode}}">Log In </a></li>

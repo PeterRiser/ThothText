@@ -4,7 +4,7 @@ from django.template import RequestContext
 from home.models import *
 #create your views here.
 from forms import *
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.views.decorators.csrf import *
 from django.shortcuts import render_to_response
@@ -19,8 +19,9 @@ def register(request):
             user = User.objects.create_user(
             username=form.cleaned_data['username'],
             password=form.cleaned_data['password1'],
-            email=form.cleaned_data['email']
+            email=form.cleaned_data['email'],
             )
+            Group.objects.get(name='Reader').add(user)
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
@@ -115,8 +116,23 @@ def search(request):
         ret['found_entries'] = False
     return render(request,'mainpage/search.html', ret)
 
-@ensure_csrf_cookie
+
+def not_in_reader_group(user):
+    """Use with a ``user_passes_test`` decorator to restrict access to 
+    authenticated users who are not in the "Student" group."""
+    return user.is_authenticated() and not user.groups.filter(name='Reader').exists()
+
+
+# Use the above with:
+
+
+
+@login_required
+@user_passes_test(not_in_reader_group, login_url='/registration/permission/')
+@ensure_csrf_cookie 
 def editpage(request, bid = -1, pid = 1):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     ret = {}
     b = Textbook.objects.get(id = int(bid))
     page = b.pages.get(page_num = int(pid))
@@ -133,15 +149,18 @@ def editpage(request, bid = -1, pid = 1):
             new = Section.objects.filter(page=page).get(order=order[i])
             newOrder.append( new )
         for i in range(len(newOrder)):
-            newOrder[i].order = i+1
+            newOrder[i].order = i
             newOrder[i].save()
-
+        newOrder[0].order = 1
+        newOrder[0].save()
         
             
             
             
     return render(request,"content/editpage.html", ret)
-    
+
+@login_required
+@user_passes_test(not_in_reader_group, login_url='/registration/permission/')
 def editsection(request, bid = -1, pid=1,sid=1):
     book = Textbook.objects.get(id = int(bid))
     page = book.pages.get(page_num = int(pid))
@@ -165,3 +184,6 @@ def editsection(request, bid = -1, pid=1,sid=1):
             section.save()
             return HttpResponseRedirect('/book/'+str(book.id)+"/"+str(page.page_num)+"/editpage/")
     return render(request,"content/editsection.html", ret)
+
+def permission(request):
+    return render(request, "registration/permission.html")

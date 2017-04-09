@@ -8,6 +8,7 @@
             {{form.as_p}}
             <input id="test" type="submit" value='Submit'>
             </form>
+            <a href = "{% url 'editpage' bid=book.id pid=page.page_num %}"> <button>Return</button></a>
             
 </div>
 {% endblock %}
