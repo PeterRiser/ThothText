@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+<div>
+            <form action="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}" method="post">
+            {% csrf_token %}
+            
+            {{form.media}}
+            {{form.as_p}}
+            <input id="test" type="submit" value='Submit'>
+            </form>
+            <a href = "{% url 'editpage' bid=book.id pid=page.page_num %}"> <button>Return</button></a>
+            
+</div>
+{% endblock %}
+ 

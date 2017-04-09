@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% block content %}
+    <body>
+        
+        <h1>{{page.page_title}}</h1>
+        <div class ="arrowNav">
+            <div class ="arrowLeft">
+            {% if prev_page != -1 %}
+                <button1><a href="{% url 'book' bid=book.id pid=prev_page %}">Previous Page</a></button>
+            {% endif %}
+            </div>
+            <div class ="arrowRight">
+            {% if next_page != -1 %}
+                <button1><a href="{% url 'book' bid=book.id pid=next_page %}">Next Page</a></button>
+            {% endif %}
+        </div>
+        </div>
+        <a href="{% url 'editpage' bid=book.id pid=page.page_num %}"><button>Edit this Page</button></a>
+        {% for section in sections.all %}
+        <div id="PageText">
+            <h3>
+                {{section.order}}. {{section.section_title}}
+            </h3>
+            <p>
+                <div>
+                {{section.text|safe}}
+                </div>
+            </p>
+        </div>
+        {% endfor %}
+        
+    </body>
+    <footer>
+    </footer>
+{% endblock %}

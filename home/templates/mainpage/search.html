@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %} 
+<div class ="WILSON MOVE THIS WHEREEVER">
+    {% if found_entries != False %}
+    <div><p>Search Results:</p>
+        {% for page in found_entries %}
+        <p><a style="color:black" href="{% url 'book' bid=page.textbook.id pid=page.page_num %}">{{page.page_title}} <v style="color:light gray"> - {{page.textbook.title}}</v></a></p>
+        {% endfor %}
+        
+    </div>
+    {% else %}
+    <h1>No Results</h1>
+    {% endif %}
+{%endblock%}

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'home',
     'nested_inline',
     'ckeditor',
-    'ckeditor_uploader'
+    'ckeditor_uploader',
+    'adminsortable'
     
 ]
 
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.core.context_processors.request",
             ],
         },
     },
@@ -130,6 +132,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 MEDIA_ROOT="./"
 MEDIA_URL='/media/'
+STATIC_ROOT = "/home/static/"
 STATIC_URL = '/static/'
 
 
