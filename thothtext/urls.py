@@ -22,7 +22,9 @@ import django
 import settings
 
 urlpatterns = [
-    url(r'^prev/$',prev ),
+    url(r'^registration/permission/$', permission, name = "permission"),
+    url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/editpage/$', editpage, name = 'editpage'),
+    url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/editpage/(?P<sid>[0-9])/$', editsection, name = 'editsection'),
     url(r'^admin/', admin.site.urls),
     url(r'^$', home , name = 'home'),
     url(r'^search/$', search, name = 'search'),

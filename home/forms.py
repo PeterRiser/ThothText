@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from ckeditor.fields import RichTextField
  
 class RegistrationForm(forms.Form):
- 
     username = forms.RegexField(regex=r'^\w+$', widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Username"), error_messages={ 'invalid': _("This value must contain only letters, numbers and underscores.") })
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(required=True, max_length=30)), label=_("Email address"))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=dict(required=True, max_length=30, render_value=False)), label=_("Password"))
@@ -31,4 +30,4 @@ class RegistrationForm(forms.Form):
 class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
-        exclude = ('page',)
+        exclude = ('page','order')

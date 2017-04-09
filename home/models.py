@@ -62,6 +62,8 @@ class Section(models.Model):
     section_title = models.CharField(max_length=256,null=True)
     text = RichTextField(config_name='default',null=True)
     order = models.IntegerField(default = 1)
+    class Meta:
+        ordering = ['order']
     def __str__(self):
         return self.section_title
         
@@ -74,6 +76,7 @@ class Section(models.Model):
         for section in sections: 
             section.order += 1
             section.save()
+        
                 
         
         super(Section, self).save(**kwargs)

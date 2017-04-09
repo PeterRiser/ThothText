@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
     <body>
+        
         <h1>{{page.page_title}}</h1>
         <div class ="arrowNav">
             <div class ="arrowLeft">
@@ -14,12 +15,11 @@
             {% endif %}
         </div>
         </div>
-        
-        <div>
-        {% for section in sections %}
+        <a href="{% url 'editpage' bid=book.id pid=page.page_num %}"><button>Edit this Page</button></a>
+        {% for section in sections.all %}
         <div id="PageText">
             <h3>
-                {{section.section_title}}
+                {{section.order}}. {{section.section_title}}
             </h3>
             <p>
                 <div>
@@ -28,23 +28,8 @@
             </p>
         </div>
         {% endfor %}
-        </div>
         
     </body>
     <footer>
-        <div>
-            {% if user.is_authenticated %}
-            <form action="{% url 'book' pid=page.page_num bid=book.id %}" method="post">
-            {% csrf_token %}
-            
-            {{form.media}}
-            {{form.as_p}}
-            <input type="submit" value='Submit'>
-            </form>
-            
-            {% else %}
-            <a href = "{% url 'login' %}?next={{request.path}}">Log In to make changes to this page!</a>
-            {% endif %}
-        </div>
     </footer>
 {% endblock %}
