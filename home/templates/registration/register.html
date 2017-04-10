@@ -1,6 +1,6 @@
 {% extends "index.html" %}
-{% block head %}User Registration{% endblock %}
-{% block content %}
+{% block head %}<div class = "boxt"><h2>User Registration</div></h2>{% endblock %}
+{% block content %}<div class = "boxp">
     <form method="post" action=".">{% csrf_token %}
         <table border="0">
             {{ form.as_table }}
@@ -8,4 +8,5 @@
         <input type="submit" value="Register" />
     </form>
     <a href="{% url 'login' %}">Login</a>
+    </div>
 {% endblock %}
