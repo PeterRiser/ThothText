@@ -4,6 +4,7 @@ from django.template import RequestContext
 from home.models import *
 #create your views here.
 from forms import *
+from django.contrib.auth.models import Group, User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.views.decorators.csrf import *
@@ -21,7 +22,7 @@ def register(request):
             password=form.cleaned_data['password1'],
             email=form.cleaned_data['email'],
             )
-            Group.objects.get(name='Reader').add(user)
+            Group.objects.get(name='Reader').user_set.add(user)
             return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
