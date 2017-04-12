@@ -14,18 +14,18 @@
  
 }
 h1 {
- color: #ff9900;
+ color: #e3b000;
  font-size: 20;
  text-align: center;
  font: bold 100%;
  padding: 5px;
- border-bottom: thin solid black;
- border-top: thin solid black;
- background-color: #f2f2f2;
+text-align: center;
+    font-weight: bold;
+background: #596a72
 }
 
 h2{
-color: #ff9900;
+color: #e3b000;
  font-size: 25;
  text-align: center;
  font: bold 100%;
@@ -38,7 +38,7 @@ color: #ff9900;
 }
 
 h3{
-color: #ff9900;
+color: #e3b000;
  font-size: 25;
  text-align: center;
  font: bold 100%;
@@ -89,7 +89,7 @@ color: #fff;
  
 .arrowNav a {
 text-decoration: none;
-background: #225773;
+background: gray;
 color: #fff;
 font-size: 16px;
 }
