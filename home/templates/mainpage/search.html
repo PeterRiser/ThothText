@@ -2,11 +2,20 @@
 {% block content %} 
 <div class ="WILSON MOVE THIS WHEREEVER">
     {% if found_entries != False %}
-    <div><p>Search Results:</p>
-        {% for page in found_entries %}
-        <p><a style="color:black" href="{% url 'book' bid=page.textbook.id pid=page.page_num %}">{{page.page_title}} <v style="color:light gray"> - {{page.textbook.title}}</v></a></p>
+    <div><p>Section Results:</p>
+        {% for section in sections %}
+        <p><a style="color:rgb(227,176,0)" href="{% url 'book' bid=section.page.textbook.id pid=section.page.page_num %}">{{section.section_title}} <v style="color:light gray"> - {{section.page.page_title}} - {{section.page.textbook.title}}</v></a></p>
         {% endfor %}
-        
+    </div>
+    <div><p>Page Results:</p>
+        {% for page in pages %}
+        <p><a style="color:rgb(227,176,0)" href="{% url 'book' bid=page.textbook.id pid=page.page_num %}">{{page.page_title}} <v style="color:light gray"> - {{page.textbook.title}}</v></a></p>
+        {% endfor %}
+    </div>
+    <div><p>Textbook Results:</p>
+        {% for book in books %}
+        <p><a style="color:rgb(227,176,0)" href="{% url 'book' bid=book.id pid=1 %}">{{book.title}} </a></p>
+        {% endfor %}
     </div>
     {% else %}
     <h1>No Results</h1>
