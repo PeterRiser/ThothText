@@ -20,7 +20,7 @@
 
 
 
-input[type=submit]{
+.submit{
      width: 70px;
     background-color: #e3b000;;
     color: black;
