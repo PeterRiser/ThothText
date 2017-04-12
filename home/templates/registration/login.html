@@ -1,12 +1,14 @@
 <html>
-    
-<link rel = "stylesheet" href= "{ 'Login.css' %}" >
-{% extends "index.html" %}
+    {% extends "index.html" %}
+ {% load staticfiles %}
+<link rel = "stylesheet" href= "{% static 'Login.css' %}" > >
 
-{% block head %}<div ='top'>Login</div>{% endblock %}
+
+{% block head %}<div class ="boxt"><h2>Login</h2></div>{% endblock %}
 
 
 {% block content %}
+<div class = "boxp">
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -20,6 +22,8 @@
         {% endif %}
     </form>
     <p> Don't have an account? <a href="/register">Register Here!</a></p>
+    </div>
 {% endblock %}
 
+   
 </html>

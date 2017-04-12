@@ -1,5 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
+{%load staticfiles %}
+    <link rel = "stylesheet" href= "{% static 'page.css' %}" >
     <body>
         
         <h1>{{page.page_title}}</h1>
