@@ -45,9 +45,19 @@ h3{
     font-size: 35px;
 }
 
+h4{
+    font-size: 30px;
+    color: black;
+}
+
 p1{
     float:left;
     max-width: 50%;
+}
+
+p3{
+ color: black
+ ;   
 }
 
 /* Button for logging in maybe some other options?*/
@@ -186,11 +196,11 @@ h2::first-line{
 #books
 
 div.img {
-    border: 1px solid #ccc;
+    
 }
 
 .img:hover{
- border: 1px solid #777;
+background-color: #e2e4ee
 }
 
 .img img {
@@ -204,14 +214,22 @@ div.img {
 }
 
 * {
-    box-sizing: border-box;
+    box-sizing:  border-box;
+}
+.imgbox{
+    
+}
+.responsive {
+    padding: 6 6px;
+    float: left;
+    border: 1px solid black;
+    width: 24.99999%;
+    margin-right: 5px;
 }
 
-.responsive {
-    padding: 0 6px;
-    float: left;
-    
-    width: 24.99999%;
+.responsive:hover{
+    border: 8px solid black;
+    background-color: #e2e4ee;
 }
 
 
@@ -221,6 +239,44 @@ div.img {
     display: table;
     clear: both;
 }
+
+/*links for books*/
+a.one {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a.one:link {
+  color: white;
+}
+
+a.one:visited {
+  color: #a8aab3;
+}
+
+a.one:focus {
+  border-bottom: none;
+  background: #e2e4ee;
+}
+
+a.one:hover {
+  border-bottom: none;     
+  background:  #e2e4ee;
+   
+}
+
+a.one:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
+}
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 700px){
     .responsive {

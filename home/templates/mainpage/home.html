@@ -15,12 +15,12 @@
     <hr size="10" color=black>
     <div class = "intro">
         <h3>How do we do it?</h3>
-        <p1> Lorem ipsum dolor sit amet, est vocibus ceteros accusata at.i deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel.</p1>
+        <p1> Lorem ipsum dolor sit amet, est vocibus ceteros accusata at.i deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel.Id eam epicurei consequat efficiantur, ius quidam eloquentiam ei, et vel eius omittantur. Pro vivendum euripidis gloriatur te. Te usu quot augue reformidans, case quando urbanitas mel ne, omnis constituto vim ea. Mei te erat facer feugait. Ne erat dissentiet sea, quo at noluisse appetere torquatos. Te tota eirmod maluisset vis. Legere convenire mei ut, pro hinc alienum ocurreret ex. Pri at oblique ponderum theophraso, alii vidisse consulatu cu mea, constituto honestatis eu pro. Nihil saepe percipitur his ut, vis ex inani deleniti aliquando. Offendit tacimates in eum, per an sumo aliquam. Primis legendos atomorum nec et, adhuc sensibus gubergren qui an. Pri errem altera ex, eu accumsan forensibus disputationi mel.</p1>
    
     </div>
     <article>
     <div class ="videoWrapper">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/Ifi9M7DRazI" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Buyub6vIG3Q?ecver=2" frameborder="0" allowfullscreen></iframe>
     </div>
     </article>
     <hr size="30" color=white>
@@ -30,19 +30,20 @@
         </div>
         <div class=" containerBooks">
         {% for book in books %}
+        <div class = "imgbox">
         <div class="responsive">
             <div class="img">
-                <a href="{% url 'book' bid=book.id pid=001 %}">
-                    <img src= "{{ book.cover.url }}" width ="200" height ="400"/>
+                <a class ="one" href="{% url 'book' bid=book.id pid=001 %}">
+                    <img src= "{{ book.cover.url }}" width ="200" height ="400">
                     <div class ="desc">
-                        <h1>{{book.title}}</h1>
-                        <p>{{book.founder}}</p>
+                        <h4>{{book.title}}</h4>
+                        <p3>{{book.founder}}</p3>
                     </div>
                 </a>
             </div>
         
-       
+       </div>
         </div>
         {% endfor %}
-        </div
+        </div>
 {% endblock %}
