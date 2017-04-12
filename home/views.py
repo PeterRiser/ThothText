@@ -1,17 +1,18 @@
-from django.shortcuts import render_to_response
-from django.shortcuts import render
-from django.template import RequestContext
+from django.shortcuts import render_to_response, render
 from home.models import *
+from itertools import chain
 #create your views here.
 from forms import *
 from django.contrib.auth.models import Group, User
+from django.db.models import Count, Min, Sum, Avg
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.views.decorators.csrf import *
-from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 import json
+
+
 @csrf_protect
 def register(request):
     if request.method == 'POST':
@@ -100,22 +101,27 @@ def handler500(request):
 
 def search(request):
     ret = {}
-    query_string = ''
-    found_entries = None
-    if ('q' in request.GET) and request.GET['q'].strip():
-        query_string = request.GET['q']
-        
-        entry_query = get_query(query_string, ['page_title'])
-        
-        found_entries = Page.objects.filter(entry_query)
-        ret['entry_query'] = entry_query
-        if not found_entries:
-            ret['found_entries'] = False
-        else:
-            ret['found_entries'] = found_entries
+    if 'q' in request.GET and request.GET['q']:
+        q = request.GET['q']
+        books = Textbook.objects.filter(title__icontains=q)
+        pages = Page.objects.filter(page_title__icontains=q)
+        sections= Section.objects.filter(section_title__icontains=q)
+        return render(request, 'mainpage/search.html', {'books': books, 'sections':sections,'pages':pages, 'query': q})
     else:
+        
         ret['found_entries'] = False
     return render(request,'mainpage/search.html', ret)
+    # ret = {}
+    # query_string = ''
+    # found_entries = None
+    # if ('q' in request.GET):
+    #     query_string = request.GET['q']
+    #     books = Textbook.objects.filter(title__icontains=query_string)
+    #     pages = Page.objects.filter(page_title__icontains=query_string)
+    #     sections = Section.objects.filter(section_title__icontains=query_string)
+    #     ret['books'] = books
+    #     ret['page'] = pages
+    #     ret['sections'] = sections
 
 
 def not_in_reader_group(user):
@@ -150,10 +156,8 @@ def editpage(request, bid = -1, pid = 1):
             new = Section.objects.filter(page=page).get(order=order[i])
             newOrder.append( new )
         for i in range(len(newOrder)):
-            newOrder[i].order = i
-            newOrder[i].save()
-        newOrder[0].order = 1
-        newOrder[0].save()
+            newOrder[i].order = i+1
+            newOrder[i].rsave()
         
             
             
@@ -182,7 +186,7 @@ def editsection(request, bid = -1, pid=1,sid=1):
                 section.section_title = request.POST.get('section_title', '')
                 section.text = request.POST.get('text', '')
 
-            section.save()
+            section.rsave()
             return HttpResponseRedirect('/book/'+str(book.id)+"/"+str(page.page_num)+"/editpage/")
     return render(request,"content/editsection.html", ret)
 

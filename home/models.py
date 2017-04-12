@@ -67,6 +67,7 @@ class Section(models.Model):
     def __str__(self):
         return self.section_title
         
+    
     def save(self, **kwargs):
         super(Section, self).save(**kwargs)
         total = Section.objects.filter(page = self.page).exclude(pk = self.pk)
@@ -80,3 +81,7 @@ class Section(models.Model):
                 
         
         super(Section, self).save(**kwargs)
+    
+    def rsave(self, **kwargs):
+        super(Section, self).save(**kwargs)
+     
