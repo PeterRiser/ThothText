@@ -81,13 +81,9 @@ li {
     
 }
 
-
-
-
-
 li a {
     display: block;
-    color: bla;
+    color: black;
     text-align: center;
     padding: 10px 16px;
     font: bold;
@@ -314,11 +310,13 @@ a:visited {
 a:focus {
   border-bottom: 1px solid;
   background: #e2e4ee;
+  color: white;
 }
 
 a:hover {
   border-bottom: 1px solid;     
   background: #e2e4ee;
+  color: white;
 }
 
 a:active {
@@ -373,15 +371,26 @@ a:active {
 }
 
 .LoginB{
-    width: 90px;
+   
     background-color: #e3b000;
-    padding: 12px 20px;
+    padding: 5px 10px;
     margin: 8px 0;
+    width: 80%;
     color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
+
+.submitBanner{
+    background-color: #e3b000;
+    width: 70px;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 
 input[type=hidden],select{
     width: 70px;
@@ -407,4 +416,36 @@ input[type=submit]:hover{
     box-sizing: border-box;
 }
 
+ a.register {
+  outline: none;
+  text-decoration: underline;
+  padding: 2px 1px 0;
  
+  
+}
+
+a.register:link {
+  color: black;
+}
+
+a.register:visited {
+  color: #a8aab3;
+}
+
+a.register:focus {
+  border-bottom: none;
+  background: #e2e4ee;
+}
+
+a.register:hover {
+  border-bottom: none;     
+  background:  #e3b000;
+  color: Black;
+
+   
+}
+
+a.register:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
+}

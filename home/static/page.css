@@ -2,23 +2,26 @@
 /*General Body*/
 
 #banner {
-  position: absolute;
+  
   top: 0px;
   left: 0px;
   width: 100%;
- 
+ position: absolute;
   padding-bottom: -5;
   margin: 0 auto; 
   background: #225773;
   color: #225773;
  
 }
-h1 {
+
+
+header {
  color: #e3b000;
- font-size: 20;
+
  text-align: center;
- font: bold 100%;
- padding: 5px;
+font-size: 25px;
+padding: 25px;
+margin-bottom: 10px;
 
  font-weight: bold;
 background: #596a72
@@ -34,8 +37,17 @@ color: #e3b000;
 }
 
 #PageText{
-    border: thin solid black;
+ width: 100%;
+ padding: 12px 20px;
+ border-radius: 4px;
+ border: 3px solid black;
+ color: gray;
+ background-color: #f8f8f8;
+ margin: 8px;   
+ margin-bottom: 4px;
 }
+
+
 
 h3{
 color: #e3b000;
@@ -45,11 +57,12 @@ color: #e3b000;
  padding: 10px;
 }
 
-p1{
+p3{
 font-family: Sans-serif;
  background-color: #ffffff;
- color: #ff9900;
- padding: 5px;
+ color: blue;
+margin: 10px;
+ 
 }
 
 
@@ -58,11 +71,14 @@ font-family: Sans-serif;
 
 .arrowLeft a {
 text-decoration: none;
-position: fixed;
+
 left: -5px;
 top: 45%;
 padding: 15px 10px;
 transition: .2s ease-in;
+position: absolute;
+border-bottom-right-radius: 8px;
+border-top-right-radius: 8px;
 }
  
 .arrowLeft a:hover {
@@ -73,29 +89,55 @@ color: #fff;
  
 .arrowRight a {
 text-decoration: none;
-position: fixed;
+
 right: -5px;
 top: 45%;
 padding: 15px 10px;
-
+border-bottom-left-radius:  8px;
+border-top-left-radius: 8px;
 transition: .2s ease-in;
+position: absolute;
 }
  
 .arrowRight a:hover {
 right: 0;
 transition: .2s ease-in;
 color: #fff;
+
+content:'\00bb';
+
 }
+ 
+
  
 .arrowNav a {
 text-decoration: none;
-background: gray;
-color: #fff;
+background:  #e3b000;
+color:  #225773;
 font-size: 16px;
 }
 .HomeButton{
  text-align: left;
- position: relative;
+position: absolute;
  text-decoration:none;
  color: #ff9900;
+}
+
+.editButton{
+ background-color: #E5B719;
+ font-size: 12px;
+ padding: 7px 9px;
+ text-decoration: none;
+ border:none;
+ display:inline-block;
+ cursor: pointer;
+ border-radius: 8px;
+ 
+
+ 
+}
+
+button:hover{
+ color: white;
+ 
 }
