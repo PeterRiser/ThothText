@@ -20,7 +20,7 @@
 
 
 
-input[type=submit]{
+.submit{
      width: 70px;
     background-color: #e3b000;;
     color: black;
@@ -31,4 +31,37 @@ input[type=submit]{
 
 input[type=submit]:hover{
     background-color: gray;
+}
+
+
+a.register {
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
+  
+}
+
+a.register:link {
+  color: black;
+}
+
+a.register:visited {
+  color: #a8aab3;
+}
+
+a.register:focus {
+  border-bottom: none;
+  background: #e2e4ee;
+}
+
+a.register:hover {
+  border-bottom: none;     
+  background:  red;
+  color: Blue;
+   
+}
+
+a.register:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
 }

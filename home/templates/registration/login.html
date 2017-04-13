@@ -14,14 +14,14 @@
     {% endif %}
     <form method="post" action=".">{% csrf_token %}
         {{ form.as_table }}
-        <input type="submit" value="Login" />
+        <input type="submit" class="LoginB" value="Login" />
         {% if next == "/L/?next=/" %}
-        <input type="hidden" name="next" value="/" />
+        <input type="hidden" name="next"  value="/" />
         {% else %}
-        <input type="hidden" name="next" value="{{ next }}" />
+        <input type="hidden" name="next" class="inputsHidden"  value="{{ next }}" />
         {% endif %}
     </form>
-    <p> Don't have an account? <a href="/register">Register Here!</a></p>
+    <p> Don't have an account? <a class ="register" href="/register" >Register Here!</a></p>
     </div>
 {% endblock %}
 

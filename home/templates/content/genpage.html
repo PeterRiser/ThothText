@@ -4,7 +4,7 @@
     <link rel = "stylesheet" href= "{% static 'page.css' %}" >
     <body>
         
-        <h1>{{page.page_title}}</h1>
+        <header>{{page.page_title}}</header>
         <div class ="arrowNav">
             <div class ="arrowLeft">
             {% if prev_page != -1 %}
@@ -17,17 +17,17 @@
             {% endif %}
         </div>
         </div>
-        <a href="{% url 'editpage' bid=book.id pid=page.page_num %}"><button>Edit this Page</button></a>
+        <a href="{% url 'editpage' bid=book.id pid=page.page_num %}"><button class ="editButton">Edit this Page</button></a>
         {% for section in sections.all %}
         <div id="PageText">
             <h3>
                 {{section.order}}. {{section.section_title}}
             </h3>
-            <p>
+            
                 <div>
                 {{section.text|safe}}
                 </div>
-            </p>
+         
         </div>
         {% endfor %}
         
