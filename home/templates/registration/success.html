@@ -1,8 +1,12 @@
 {% extends "index.html" %}
+{%load staticfiles %}
+  <link rel = "stylesheet" href= "{% static 'success.css' %}" >
+  <div class ="Spacer">
 {% block head %}
- Registration Completed Successfully
+ <h7>Registration Completed Successfully!</h7>
 {% endblock %}
 {% block content %}
-    Thank you for registering.
-    <a href="/">Login</a> 
+<div class = "textArea">
+    Thank you for registering. Let's get Reading! <br>
+    <a  href="/">Login</a> </div></div>
 {% endblock %}
