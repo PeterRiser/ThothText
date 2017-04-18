@@ -38,6 +38,7 @@
                     <div class ="desc">
                         <h4>{{book.title}}</h4>
                         <p3>{{book.founder}}</p3>
+                        <p3><a href="{% url 'download' bid=book.id %}">Download This as PDF</a></p3>
                     </div>
                 </a>
             </div>

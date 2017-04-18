@@ -9,9 +9,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from django.views.decorators.csrf import *
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.template import RequestContext
 import json
-
+from custom import render_to_pdf
 
 @csrf_protect
 def register(request):
@@ -192,3 +193,17 @@ def editsection(request, bid = -1, pid=1,sid=1):
 
 def permission(request):
     return render(request, "registration/permission.html")
+
+
+def download(request, bid = -1):
+    #Retrieve data or whatever you need
+    book = Textbook.objects.get(id=int(bid))
+    response = render_to_pdf(
+            'mainpage/bookDL.html',
+            {
+                'pagesize':'A4',
+                'book': book,
+            }
+        )
+    response['Content-Disposition'] = 'attachment; filename="' + str(book.title) + '.pdf"'
+    return response
