@@ -4,7 +4,8 @@ django-nested-inline
 django-markdown-deux
 django-filebrowser
 django-ckeditor
-
+xhtml2pdf
+reportlab
 Pillow==2.3.0
 SecretStorage==2.0.0
 argparse==1.2.1

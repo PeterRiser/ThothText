@@ -22,7 +22,7 @@ class Textbook(models.Model):
         else:
             super(Textbook,self).save(**kwargs)
             t = Textbook.objects.get(title= self.title)
-            newPage = Page(page_title="CoverPage", page_num=1,textbook=t)
+            newPage = Page(page_title=self.title, page_num=1,textbook=t)
             newPage.save()
     def __str__(self):
         return self.title
