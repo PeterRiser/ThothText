@@ -50,9 +50,6 @@ def home(request):
     user = request.user
     books = Textbook.objects.all()
     ret = {}
-    
-    for o in books:
-        ret[o.id] = o
     ret['books'] = books
     ret['user'] = user
     return render(request,'mainpage/home.html', ret)
