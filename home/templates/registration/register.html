@@ -1,12 +1,16 @@
 {% extends "index.html" %}
 {% block head %}<div class = "boxt"><h2>User Registration</div></h2>{% endblock %}
 {% block content %}<div class = "boxp">
+    <div class ="formLay">
     <form method="post" action=".">{% csrf_token %}
+    <label></label>
         <table border="0">
             {{ form.as_table }}
         </table>
         <input type="submit" class= "LoginB" value="Register" />
     </form>
+    </div>
+  <br> </br>
     <a href="{% url 'login' %}">Login</a>
     </div>
 {% endblock %}
