@@ -522,3 +522,69 @@ h7{
     {
         clear: left;
     }
+    
+.sortable {
+  margin: 1px;
+  border: 4px solid black;
+  padding: 2px;
+  list-style: none;
+  width: 75%;
+  background: #f2f2f2;
+  border-radius: 4px;
+  
+}
+
+.sortable li {
+    
+  padding: 3px;
+  padding-left: 10%;
+  background: #596a72;
+  padding-left: 5px;
+  margin: 8px;
+  width: 80%;
+  border-radius: 4px;
+  color: #e3b000;
+  margin-bottom: 20px;
+  
+}
+
+.sortable li:hover{
+    background:#e3b000 ;
+    color:#596a72;
+}
+
+a.editP {
+ 
+  text-decoration: none;
+  padding: 7px 7px 0;
+  margin-bottom: 5px;
+  margin-left: 4px;
+  color: black;
+}
+
+a.editP:link {
+  color: white;
+}
+
+a.editP:visited {
+  color: #a8aab3;
+}
+
+a.editP:focus {
+  border-bottom: none;
+  background: #e2e4ee;
+  
+}
+
+a.editP:hover {
+    outline: solid #596a72 2px;
+  background:  #e2e4ee;
+  border: black 2px;
+  font-weight: bold;
+   
+}
+
+a.editP:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
+}
