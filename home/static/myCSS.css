@@ -14,7 +14,7 @@ body {
  border-bottom: thin solid black;
  
 }
-header, footer {
+header {
     padding: 25px;
     color: #e3b000;
     font-size: larger;
@@ -29,6 +29,17 @@ background: -moz-linear-gradient(left, #596a72 0%, #cedce7 100%); /* FF3.6-15 */
 /*background: -webkit-linear-gradient(left, #596a72 0%,#cedce7 100%); /* Chrome10-25,Safari5.1-6 */
 /*background: linear-gradient(to right, #596a72 0%,#cedce7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#596a72', endColorstr='#cedce7',GradientType=1 ); /* IE6-9 */
+}
+footer{
+    padding: 25px;
+    color: #e3b000;
+    font-size: larger;
+    clear: left;
+    text-align: center;
+    font-weight: bold;
+    background: #596a72;
+    margin-top: 20px;
+    
 }
 
 h1{
@@ -89,17 +100,19 @@ li a {
     font: bold;
     font-weight: bold;
     min-height: 73px;
+    background: white;
    /* background-color: #696969;*/
     
     
 }
 
 li a:hover:not(.active) {
-    background-color: black;
+    background-color: #596a72;
+    
 }
 
 .active {
-    background-color: black;
+    background-color: white;
 }
 article {
     margin-left: 170px;
@@ -484,3 +497,28 @@ h7{
     position: absolute;
     margin-top: 20px;
 }
+
+.formLay
+    {
+       font-weight: bold;
+    }
+    
+    .formLay label, .formLay input
+    {
+        display: block;
+        width: 120px;
+        float: left;
+        margin-bottom: 10px;
+        
+    }
+ 
+    .formLay label
+    {
+        text-align: right;
+        padding-right: 20px;
+    }
+ 
+    br
+    {
+        clear: left;
+    }
