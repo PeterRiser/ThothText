@@ -4,26 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-  #sortable {
-  margin: 1px;
-  border: 1px solid #EEE;
-  padding: 2px;
-  list-style: none;
-  width: 210px;
-  background: #FFF;
-}
-
-#sortable li {
-  padding: 3px;
-  background: lightgrey;
-  padding-left: 5px;
-  margin: 2px;
-  width: 200px;
-  border-radius: 4px;
-  color: red;
-}
-</style>
+ 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -76,16 +57,18 @@
     
     
     <h1>{{page.page_title}}</h1>
-    <ul id="sortable">
+    <div class="sortable">
         {% for section in sections.all %}
+            
             <li id="{{section.order}}">{{section.order}}. {{section.section_title}}<a href="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}">Edit this Section</a></li>
+        <br></br>
         {% endfor %}
       
-    </ul>
-    <a id= "ret" href="{% url 'book' pid=page.page_num bid=book.id %}">Exit without Saving</a>
-    <a id="test1" href="{% url 'book' pid=page.page_num bid=book.id %}">Save</a>
-    <a id="test2" href="{% url 'book' pid=page.page_num bid=book.id %}">Save and Exit</a>
+    </civ>
+    <a id= "ret" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Exit without Saving</a>
+    <a id="test1" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Save</a>
+    <a id="test2" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Save and Exit</a>
      
-     
+     </div>
 </body>
 {% endblock %}
