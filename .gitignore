@@ -1,2 +1,3 @@
 
-mysqlite3.db
+db.sqlite3
+home/db.sqlite3
