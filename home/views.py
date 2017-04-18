@@ -103,7 +103,7 @@ def search(request):
         q = request.GET['q']
         books = Textbook.objects.filter(title__icontains=q)
         pages = Page.objects.filter(page_title__icontains=q)
-        sections= Section.objects.filter(section_title__icontains=q)
+        sections = chain(Section.objects.filter(section_title__icontains=q), Section.objects.filter(tag__icontains=q))
         return render(request, 'mainpage/search.html', {'books': books, 'sections':sections,'pages':pages, 'query': q})
     else:
         
