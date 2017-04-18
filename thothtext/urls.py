@@ -22,6 +22,7 @@ import django
 import settings
 
 urlpatterns = [
+    url(r'^book/(?P<bid>[0-9])/$', download, name='download'),
     url(r'^registration/permission/$', permission, name = "permission"),
     url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/editpage/$', editpage, name = 'editpage'),
     url(r'^book/(?P<bid>[0-9])/(?P<pid>[0-9])/editpage/(?P<sid>[0-9])/$', editsection, name = 'editsection'),

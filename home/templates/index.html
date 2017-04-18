@@ -20,9 +20,9 @@
     {% endif %}
                 
                 
-                <li><a href=#home> Library </a></li>
-                <li><a href=#home> About Us </a></li>
-                <li><a href=#home> Contact Us </a></li>
+                <li><a href="/#library"> Library </a></li>
+                <li><a href="/#aboutus"> About Us </a></li>
+                <li><a href="/#contactus"> Contact Us </a></li>
                 <li><a>
                     <form type="get" action="{% url 'search' %}">
                     <input type="search" id="q" name="q" placeholder="Search..."/>
@@ -41,4 +41,5 @@
     </ul>
     {% block head %}{% endblock %}
     {% block content %}{% endblock %}
+    <footer> <div id="contactus" >Contact Us: priser@tulane.edu</div></footer>
 </html>

@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>{{book.title}}</title>
+
+    <style type="text/css">
+    h2 {
+            color: #e3b000;
+            font: bold 20px;
+            text-align: center;
+            padding: 10px;
+            border-bottom: thin solid black;
+        }
+        
+        h4 {
+            color: #e3b000;
+            font-size: medium;
+            font: bold 14px;
+            padding: 10px;
+        }
+        
+        p {
+            font-family: Sans-serif;
+            background-color: #ffffff;
+            font: 12px;
+            margin: 10px;
+        }
+        
+        @page {
+            margin: 1cm;
+            size: letter portait;
+            @frame footer {
+                -pdf-frame-content: footerContent;
+                bottom: 0cm;
+                margin-left: 9cm;
+                margin-right: 9cm;
+                height: 1cm;
+            }
+        }
+        /* myStyle.css */
+        /*General Body*/
+        /**page.css**/
+        /*General Body*/
+        
+        
+        /** Working on buttons forward and back **/
+    </style>
+</head>
+
+<body>
+    <h1>{{book.title}}</h1>
+    <h2>{{book.founder}}</h2>
+    <div>
+        {% for page in book.pages.all %}
+        <div>
+            <h2>{{page.page_num}}. {{page.page_title}}</h2>
+            {% for section in page.sections.all %}
+            <div>
+                <h4>{{page.page_num}}.{{section.order}} {{section.section_title}}</h4>
+                <div>
+                    {{section.text|safe}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <div id="footerContent">
+        {%block page_foot%} Page
+        <pdf:pagenumber>
+            {%endblock%}
+    </div>
+</body>
+
+</html>
