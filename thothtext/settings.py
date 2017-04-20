@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'nested_inline',
     'ckeditor',
     'ckeditor_uploader',
-    'adminsortable'
+    'adminsortable',
+    'reportlab',
+    'xhtml2pdf'
     
 ]
 

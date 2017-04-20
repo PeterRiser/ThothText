@@ -34,11 +34,11 @@
         <div id ="library" class="responsive">
             <div class="img">
                 <a class ="one" href="{% url 'book' bid=book.id pid=001 %}">
-                    <img src= "{{ book.cover.url }}" width ="200" height ="400">
+                    <img src= "{{ book.cover.url }}" height ="400">
                     <div class ="desc">
                         <h4>{{book.title}}</h4>
-                        <p3>{{book.founder}}</p3>
-                        <p3><a href="{% url 'download' bid=book.id %}">Download This as PDF</a></p3>
+                        <p3>{{book.founder}}</p3><br/>
+                        <p4><a href="{% url 'download' bid=book.id %}">Download This as PDF</a></p4>
                     </div>
                 </a>
             </div>

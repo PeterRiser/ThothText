@@ -22,7 +22,7 @@ class Textbook(models.Model):
         else:
             super(Textbook,self).save(**kwargs)
             t = Textbook.objects.get(title= self.title)
-            newPage = Page(page_title="CoverPage", page_num=1,textbook=t)
+            newPage = Page(page_title=self.title, page_num=1,textbook=t)
             newPage.save()
     def __str__(self):
         return self.title
@@ -62,6 +62,7 @@ class Section(models.Model):
     section_title = models.CharField(max_length=256,null=True)
     text = RichTextField(config_name='default',null=True)
     order = models.IntegerField(default = 1)
+    tag = models.CharField(default="", max_length = 256)
     class Meta:
         ordering = ['order']
     def __str__(self):
@@ -69,6 +70,7 @@ class Section(models.Model):
         
     
     def save(self, **kwargs):
+        
         super(Section, self).save(**kwargs)
         total = Section.objects.filter(page = self.page).exclude(pk = self.pk)
         sections = total.filter(order__gte=self.order)
