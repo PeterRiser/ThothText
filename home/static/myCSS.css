@@ -41,6 +41,20 @@ footer{
     margin-top: 20px;
     
 }
+h99{
+color: #e3b000;
+ font-size: 25;
+ text-align: center;
+ font: bold 100%;
+ padding-top: 10px;
+ padding-bottom: 10px;
+padding-left: 45%
+ 
+
+ 
+ 
+}
+
 
 h1{
     font-size: 55px;
@@ -155,7 +169,8 @@ padding-bottom: 25px;
 
 
 .containerBooks {
-    background-color: white
+    background-color: white;
+    margin-bottom: 10px;
  
 }
 
@@ -239,7 +254,8 @@ background-color: #e2e4ee
     border-color: #596a72;
     width: 24.99999%;
     margin-right: 5px;
-    background-color: #f8f8f8
+    background-color: #f8f8f8;
+    margin-bottom: 15px;
 }
 
 .responsive:hover{
@@ -255,8 +271,49 @@ background-color: #e2e4ee
     clear: both;
 }
 
+a.one {
+  
+  text-decoration: none;
+  padding: 2px 1px 0;
+}
+
+a.pdf:link {
+  color: #596a72;
+  font-weight: bold;
+  
+}
+
+a.pdf:visited {
+  color: #a8aab3;
+}
+
+a.pdf:focus {
+  border-bottom: none;
+  background: #e2e4ee;
+}
+
+a.pdf:hover {
+  border-bottom: none;     
+  background:  #e2e4ee;
+  color:#e3b000 ;
+   
+}
+
+a.pdf:active {
+  background: #e2e4ee;
+  color: #e2e4ee;
+}
+
+
+
+
+
+
+
+
 /*links for books*/
 a.one {
+ 
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
@@ -528,7 +585,8 @@ h7{
   border: 4px solid black;
   padding: 2px;
   list-style: none;
-  width: 75%;
+  width: 25%;
+  
   background: #f2f2f2;
   border-radius: 4px;
   
@@ -541,7 +599,8 @@ h7{
   background: #596a72;
   padding-left: 5px;
   margin: 8px;
-  width: 80%;
+  width: 70%;
+  position: center;
   border-radius: 4px;
   color: #e3b000;
   margin-bottom: 20px;
@@ -560,6 +619,7 @@ a.editP {
   margin-bottom: 5px;
   margin-left: 4px;
   color: black;
+  
 }
 
 a.editP:link {
@@ -587,4 +647,11 @@ a.editP:hover {
 a.editP:active {
   background: #e2e4ee;
   color: #e2e4ee;
+}
+
+hedit{
+    font-size: 40px;
+}
+
+
 }
