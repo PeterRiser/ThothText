@@ -55,20 +55,21 @@
 </head>
 <body>
     
-    
-    <h1>{{page.page_title}}</h1>
+
+    <hedit>{{page.page_title}}</hedit>
+ 
     <div class="sortable">
         {% for section in sections.all %}
-            
+              <ul id="sortable">
             <li id="{{section.order}}">{{section.order}}. {{section.section_title}}<a href="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}">Edit this Section</a></li>
         <br></br>
         {% endfor %}
-      
+           </div>
     </civ>
     <a id= "ret" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Exit without Saving</a>
     <a id="test1" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Save</a>
     <a id="test2" class ="editP" href="{% url 'book' pid=page.page_num bid=book.id %}">Save and Exit</a>
      
-     </div>
+
 </body>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
 <div>
+    
             <form action="{% url 'editsection' pid=page.page_num bid=book.id sid=section.order %}" method="post">
             {% csrf_token %}
             
