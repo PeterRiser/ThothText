@@ -1,4 +1,4 @@
-Django==1.9
+Django==1.11.28
 django-tinymce
 django-nested-inline
 django-markdown-deux
