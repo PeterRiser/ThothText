@@ -13,7 +13,7 @@ configobj==4.7.2
 decorator==3.4.0
 gunicorn==19.6.0
 html5lib==0.999
-httplib2==0.8
+httplib2==0.19.0
 ipython==1.2.1
 keyring==3.5
 launchpadlib==1.10.2
